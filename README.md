@@ -7,6 +7,8 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+Copie o arquivo `.env.example`, renomeie para `.env` e preencha os valores das variáveis de ambiente.
+
 ## Ordem de execução
 ### 1. Subir o banco de dados:
 
