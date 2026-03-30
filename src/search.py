@@ -34,7 +34,7 @@ RESPONDA A "PERGUNTA DO USUÁRIO"
 def _search_context(pergunta) -> list:
   validate_envs()
   
-  model = os.getenv("OPENAI_EMBEDDING_MODEL","text-embedding-3-small")
+  model = os.getenv("OPENAI_EMBEDDING_MODEL")
   collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME")
   connection=os.getenv("DATABASE_URL")
   embeddings = OpenAIEmbeddings(model=model)
@@ -56,6 +56,6 @@ def _search_context(pergunta) -> list:
 
 def search_prompt(pergunta=None) -> str:
   contexto = _search_context(pergunta)
-  return PromptTemplate.from_template(PROMPT_TEMPLATE).format(contexto, pergunta)
+  return PromptTemplate.from_template(PROMPT_TEMPLATE).format(contexto="\n\n".join(contexto), pergunta=pergunta)
 
  

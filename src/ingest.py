@@ -21,7 +21,7 @@ def _save_on_db(docs: list[Document]) -> None:
     try: 
         collectionName = os.getenv("PG_VECTOR_COLLECTION_NAME")
         dbConnection = os.getenv("DATABASE_URL")
-        model = os.getenv("OPENAI_EMBEDDING_MODEL","text-embedding-3-small")
+        model = os.getenv("OPENAI_EMBEDDING_MODEL")
 
         embeddings = OpenAIEmbeddings(model=model)
         store = PGVector(
